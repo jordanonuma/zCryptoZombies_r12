@@ -8,4 +8,6 @@ contract ZombieFactory {
         string name;
         uint dna;
     } //end struct zombie{}
+
+    Zombie[] public zombies;
 } //end contract ZombieFactory{}
