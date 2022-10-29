@@ -4,7 +4,9 @@ import "./SafeMath.sol";
 
 contract ZombieFactory is Ownable {
     using SafeMath for uint256;
-    
+    using SafeMath for uint32;
+    using SafeMath for uint16;
+
     uint dnaDigits = 16;
     uint dnaModulus = 10**dnaDigits;
     uint cooldownTime = 1 days;
@@ -28,7 +30,7 @@ contract ZombieFactory is Ownable {
     function _createZombie(string memory  _name, uint _dna) internal {
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime)), 0, 0) - 1;
         zombieToOwner[id] = msg.sender;
-        ownerZombieCount[msg.sender]++;
+        ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].add(1);
         emit NewZombie(id, _name, _dna);
     } //end function _createZombie()
 
