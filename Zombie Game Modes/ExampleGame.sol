@@ -40,7 +40,7 @@ contract ExampleGame is ZBGameMode  {
 
         changes.changePlayerDefense(Player.Player1, 15);
         changes.changePlayerDefense(Player.Player2, 15);
-        
+
         changes.changePlayerCurrentGooVials(Player.Player1, 3);
         changes.changePlayerCurrentGooVials(Player.Player2, 3);
 
@@ -49,6 +49,11 @@ contract ExampleGame is ZBGameMode  {
 
         changes.changePlayerMaxGooVials(Player.Player1, 8);
         changes.changePlayerMaxGooVials(Player.Player2, 8);
+
+        for (uint i = 0; i<gameState.playerStates.length; i++) {
+            CardInstance[] memory newCards = new CardInstance[](gameState.playerStates[i].cardsInDeck.length);
+            uint cardCount = 0;
+        } //end for(i)
     } //end function beforeMatchStart()
 
 } //end contract ExampleGame{}
