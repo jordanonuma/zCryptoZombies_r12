@@ -2,7 +2,7 @@ pragma solidity 0.4.25;
 
 import "./ZBGameMode.sol";
 
-contract Munchkin is Singleton  {
+contract Singleton is ZBGameMode {
 
     function beforeMatchStart(bytes serializedGameState) external {
 
@@ -21,7 +21,7 @@ contract Munchkin is Singleton  {
 
                 // Placeholder — we'll implement this logic in the next chapter
 
-                if (!cardAlreadyInDeck(gameState.playerStates[i].cardsInDeck[j])) {
+                if (!cardAlreadyInDeck) {
                     newCards[cardCount] = gameState.playerStates[i].cardsInDeck[j];
                     cardCount++;
                 } //end if()
