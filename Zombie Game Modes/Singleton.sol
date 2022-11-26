@@ -19,7 +19,11 @@ contract Singleton is ZBGameMode {
             for (uint j = 0; j < gameState.playerStates[i].cardsInDeck.length; j++) {
                 bool cardAlreadyInDeck = false;
 
-                // Placeholder — we'll implement this logic in the next chapter
+                for (uint k = 0; k < cardCount ; k++) {
+                    if(keccak256(newCards[k].mouldName) == keccak256(gameState.playerStates[i].cardsInDeck)) {
+                        cardAlreadyInDeck = true;
+                    } //end if()
+                } //end for(k)
 
                 if (!cardAlreadyInDeck) {
                     newCards[cardCount] = gameState.playerStates[i].cardsInDeck[j];
