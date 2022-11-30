@@ -23,6 +23,11 @@ contract ZombiePile is ZBGameMode  {
 
             for (uint j = 0; j < gameState.playerStates[i].cardsInDeck.length; j++) {
                 uint rand = uint(keccak256(abi.encodePacked(now, player1CardCount + player2CardCount))) % 2;
+                if ( player1CardCount + 1 > gameState.playerStates[0].cardsInDeck.length) {
+                    rand = 1;
+                } else if( player2CardCount + 1 > gameState.playerStates[1].cardsInDeck.length) {
+                    rand = 0;
+                } //end if-elseif()
                 if (rand == 0) {
                     player1Cards[player1CardCount] = gameState.playerStates[i].cardsInDeck[j];
                     player1CardCount++;
@@ -30,7 +35,6 @@ contract ZombiePile is ZBGameMode  {
                     player2Cards[player2CardCount] = gameState.playerStates[i].cardsInDeck[j];
                     player2CardCount++;
                 } // end if-else()
-
             } //end for(j)
 
             changes.changePlayerCardsInDeck(Player(i), newCards, cardCount);
