@@ -13,4 +13,9 @@ contract PriceConsumerV3 {
         (,int price,,,) = priceFeed.latestRoundData();
         return price;
     } //end function getLatestPrice()
+
+    function getDecimals() public view returns(uint8) {
+        uint8 decimals = priceFeed.decimals();
+        return decimals;
+    } //end function getDecimals()
 } //end contract PriceConsumerV3{}
