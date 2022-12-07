@@ -2,7 +2,13 @@ pragma solidity ^0.6.6;
 
 import "@chainlink/contracts/src/v0.6/VRFConsumerBase.sol";
 
-contract ZombieFactory {
+contract ZombieFactory is VRFConsumerbase {
+
+    constructor() VRFConsumerBase(
+        0xb3dCcb4Cf7a26f6cf6B120Cf5A73875B7BBc655B,
+        0x01BE23585060835E02B77ef475b0Cc51aA1e0709) public {
+            
+    } //end constructor()
 
     uint dnaDigits = 16;
     uint dnaModulus = 10 ** dnaDigits;
