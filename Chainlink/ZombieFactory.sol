@@ -37,9 +37,9 @@ contract ZombieFactory is VRFConsumerbase {
         randomResult = randomness;
     } //end function fulfillRandomness()
 
-    function _generatePseudoRandomDna(string memory _str) private view returns (uint) {
+    /* function _generatePseudoRandomDna(string memory _str) private view returns (uint) {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
-    } //end function _generate PseudoRandomDna()
+    } //end function _generate PseudoRandomDna() */
 
 } //end contract ZombieFactory{}
