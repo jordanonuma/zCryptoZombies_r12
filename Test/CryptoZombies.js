@@ -57,7 +57,7 @@ const zombieNames = ["Zombie 1", "Zombie 2"];
          result = await contractInstance.createRandomZombie(zombieNames[1], {from: bob});
          const secondZombieId = result.logs[0].args.zombieId.toNumber();
          
-         await time.increase;
+         await time.increase(time.duration.days(1));
          await contractInstance.attack(firstZombieId, secondZombieId, {from: alice});
          assert.equal(result.receipt.status, true);
    }) //end it()
