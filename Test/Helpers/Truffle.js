@@ -1,4 +1,4 @@
-const HDWalletProvider = require("truffle-hdwallet-provider");
+const HDWalletProvider = require("truffle-hdwallet-provider"); //for testing
 const LoomTruffleProvider = require('loom-truffle-provider');
 const mnemonic = "YOUR MNEMONIC HERE";
 module.exports = {
