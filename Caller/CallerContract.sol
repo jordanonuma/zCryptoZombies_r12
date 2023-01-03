@@ -17,7 +17,7 @@ contract CallerContract {
 
     function updateEthPrice() public {
         uint256 id = oracleInstance.getLatestEthPrice();
-        myRequest[id] = true;
+        myRequests[id] = true;
         emit ReceivedNewRequestIdEvent(id);
     } //end function updateEthPrice()
 } //end contract CallerContract{}
