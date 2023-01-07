@@ -16,5 +16,10 @@ contract EthPriceOracle is Ownable {
       pendingRequests[id] = true;
       emit GetLatestEthPriceEvent(msg.sender, id);
       return id;
-  }
+  } //end function getLatestEthPrice()
+
+  function setLatestEthPrice(uint256 _ethPrice, address callerAddress, uint256 id) {
+      require(pendingRequests[_id], "This request is not in my pending list.");
+      delete pendingRequests[_id];
+  } //end function setLatestEthPrice()
 }
