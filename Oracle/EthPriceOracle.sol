@@ -29,7 +29,12 @@ contract EthPriceOracle {
   function removeOracle (address _oracle) public {
     require(owners.has(msg.sender), "Not an owner!");
     require(oracles.has(_oracle), "Not an oracle!");
-    
+    uint private numOracles = 0;
+    event RemoveOracleEvent(address oracleAddress);
+    require(numOracles > 1, "Do not remove the last oracle!");
+    oracles.remove(_oracle);
+    numOracles--;
+    emit RemoveOracleEvent(_oracle);
   }//end function removeOracle()
 
   function getLatestEthPrice() public returns(uint256) {
@@ -51,4 +56,4 @@ contract EthPriceOracle {
       callerContractInstance.callback(_ethPrice, _id);
       emit SetLatestEthPriceEvent(_ethPrice, _callerAddress);
   } //end function setLatestEthPrice()
-}
+} //end contract EthPriceOracle{}
