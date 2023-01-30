@@ -6,6 +6,7 @@ contract EthPriceOracle {
   using Roles for Roles.Role; //attaches Roles library to the Roles.Role data type
   Roles.Role private owners;
   Roles.Role private oracles;
+  using SafeMath for uint256;
 
   uint private randNonce = 0;
   uint private modulus = 1000;
@@ -69,10 +70,10 @@ contract EthPriceOracle {
       if (numResponses == THRESHOLD) {
         uint computedEthPrice = 0;
         for (uint f=0; f < requestIdToResponse[_id].length; f++) {
-          computedEthPrice += requestIdToResponse[_id][f].ethPrice;
+          computedEthPrice = computedEthPrice.add(requestIdToResponse[_id][f].ethPrice); 
         } //end for()
 
-        computedEthPrice = computedEthPrice / numResponses;
+        computedEthPrice = computedEthPrice.div(numResponses);
         
         delete pendingRequests[_id];
         CallerContractInterface callerContractInstance;
