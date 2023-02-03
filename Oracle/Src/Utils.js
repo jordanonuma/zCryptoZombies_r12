@@ -38,3 +38,17 @@ async function registerAccount (wallet) {
         await changePubkey.awaitReceipt()
     } //end if()
 } //end function registerAccount()
+
+async function depositToZkSync(zkSyncWallet, token, amountToDeposit, ethers) {
+    const deposit = await zkSyncWallet.depositToSyncFromEthereum({
+        depositTo: zkSyncWallet.address(),
+        token: token,
+        amount: ethers.utils.parseEther(amountToDeposit)
+    }) //depositToSyncFromEthereum()
+    try {
+        await deposit.awaitReceipt()
+    } catch (error) {
+        console.log('Error while awaiting confirmation from the zkSync operators.')
+        console.log(error)
+    } //end try-catch{}
+} //end function depositToZkSync()
