@@ -90,7 +90,7 @@ async function withdrawToEthereum (wallet, amountToWithdraw, withdrawalFee, toke
 
 async function displayZkSyncBalance(wallet, tokenSet) {
     const state = await wallet.getAccountState()
-    const committedBalances = state.committed.committed.balances
+    const committedBalances = state.committed.balances
     const verifiedBalances = state.verified.balances
     for (const property in committedBalances) {
         console.log(`Committed ${property} balance for ${wallet.address()}: ${tokenSet.formatToken(property, committedBalances[property])}`)
